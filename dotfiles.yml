@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - file:
+        src: "{{ curdir }}/files/gitconfig"
+        dest: ~/.gitconfig
+        state: link
+    - file:
+        src: "{{ curdir }}/files/gitignore_global"
+        dest: ~/.gitignore_global
+        state: link

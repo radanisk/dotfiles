@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - file:
+        dest: ~/.config/nvim
+        state: directory
+    - file:
+        src: "{{ curdir }}/files/init.vim"
+        dest: ~/.config/nvim/init.vim
+        state: link

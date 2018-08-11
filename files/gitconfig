@@ -1,0 +1,13 @@
+[user]
+	name = Aleksandr B. Ivanov
+[core]
+	excludesfile = /Users/radanisk/.gitignore_global
+	autocrlf = input
+	editor = /usr/local/bin/nvim
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	template = /Users/radanisk/.stCommitMsg
