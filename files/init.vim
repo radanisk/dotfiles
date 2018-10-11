@@ -126,9 +126,6 @@ inoremap  <Esc>:m .-2<CR>==gi
 vnoremap Ô :m '>+1<CR>gv=gv
 vnoremap  :m '<-2<CR>gv=gv
 
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-
 autocmd FileType vue syntax sync fromstart
 
 autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
