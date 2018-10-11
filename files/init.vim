@@ -17,7 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -35,6 +35,7 @@ Plug 'posva/vim-vue'
 Plug 'kchmck/vim-coffee-script'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
@@ -45,6 +46,7 @@ language en_US
 " Enable hotkeys for Russian layout
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+set cursorline
 set hidden
 set number
 
@@ -58,7 +60,7 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 
-" colorscheme solarized
+colorscheme jellybeans
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
@@ -87,12 +89,11 @@ let g:LanguageClient_serverCommands = {
       \ 'ruby': [ 'solargraph', 'stdio' ]
       \ }
 
-let g:ale_php_phpcs_standard = 'PSR2'
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 nnoremap <Leader>o :GFiles .<CR>
 nnoremap <leader>ff :Files<CR>
@@ -159,3 +160,5 @@ let g:rails_projections = {
 let g:ale_fixers = {
       \   'ruby': ['rubocop']
       \ }
+
+nmap <silent> <leader>d <Plug>DashSearch
