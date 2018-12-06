@@ -2,21 +2,15 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ervandew/supertab'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-Plug 'jiangmiao/auto-pairs'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
@@ -31,9 +25,9 @@ Plug 'tpope/vim-endwise'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ekalinin/Dockerfile.vim'
 
+Plug 'jiangmiao/auto-pairs'
 Plug 'posva/vim-vue'
 Plug 'kchmck/vim-coffee-script'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 
@@ -60,6 +54,9 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 
+set cmdheight=2
+set signcolumn=yes
+
 colorscheme jellybeans
 
 " Map ctrl-movement keys to window switching
@@ -79,21 +76,7 @@ nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 nnoremap <leader>b :BufExplorer<CR>
 
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
-
 """ Plugin Settings
-
-let g:LanguageClient_serverCommands = {
-      \ 'ruby': [ 'solargraph', 'stdio' ]
-      \ }
-
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 nnoremap <Leader>o :GFiles .<CR>
 nnoremap <leader>ff :Files<CR>
@@ -101,8 +84,6 @@ nnoremap <Leader>w :wa<CR>
 
 nmap <silent> // :nohlsearch<CR>
 noremap ,hl :set hlsearch! hlsearch?<CR>
-
-let g:airline#extensions#ale#enabled = 1
 
 nmap <C-F>f <Plug>CtrlSFPrompt
 vmap <C-F>f <Plug>CtrlSFVwordPath
@@ -128,9 +109,6 @@ vnoremap  :m '<-2<CR>gv=gv
 
 autocmd FileType vue syntax sync fromstart
 
-autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-let g:deoplete#enable_at_startup = 1
-
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
 let g:rails_projections = {
@@ -154,8 +132,33 @@ let g:rails_projections = {
       \   },
       \ }
 
-let g:ale_fixers = {
-      \   'ruby': ['rubocop']
-      \ }
-
 nmap <silent> <leader>d <Plug>DashSearch
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
