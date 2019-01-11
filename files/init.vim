@@ -1,5 +1,3 @@
-set nocompatible
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -26,12 +24,13 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'posva/vim-vue'
-Plug 'kchmck/vim-coffee-script'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
+
+set nocompatible
 
 let mapleader = "\<Space>"
 
@@ -71,7 +70,6 @@ map <leader>vr :source $MYVIMRC<CR>
 
 """ Plugins Keymaps
 
-nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 nnoremap <leader>b :BufExplorer<CR>
@@ -95,8 +93,9 @@ augroup common
   autocmd BufEnter * EnableStripWhitespaceOnSave
 augroup END
 
-augroup filetypedetect
-  autocmd BufEnter *.php setlocal ts=4 sw=4 sts=4
+augroup go
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
 " Move lines up and down
