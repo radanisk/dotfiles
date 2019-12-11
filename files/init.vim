@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
@@ -26,6 +26,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'leafgarland/typescript-vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -52,7 +54,7 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 
-set cmdheight=2
+set updatetime=300
 set signcolumn=yes
 
 colorscheme jellybeans
@@ -69,9 +71,8 @@ map <leader>vr :source $MYVIMRC<CR>
 
 """ Plugins Keymaps
 
+" nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
-
-nnoremap <leader>b :BufExplorer<CR>
 
 """ Plugin Settings
 
@@ -91,6 +92,7 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 augroup common
   autocmd BufEnter * EnableStripWhitespaceOnSave
 augroup END
+let g:strip_whitespace_confirm=0
 
 augroup go
   autocmd!
@@ -159,9 +161,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-nnoremap <Leader>gst :Gstatus<CR>
-nnoremap <Leader>gbl :Gblame<CR>
 
 au FileType go nmap <leader>rv <Plug>(go-run-vertical)
 let g:go_def_mode = 'gopls'
