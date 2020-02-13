@@ -19,7 +19,6 @@ Plug 'moll/vim-node'
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'jiangmiao/auto-pairs'
@@ -27,7 +26,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rust-lang/rust.vim'
+Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -98,6 +98,7 @@ augroup go
   autocmd!
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
+au BufNewFile,BufRead .env.* call dist#ft#SetFileTypeSH(getline(1))
 
 " Move lines up and down
 nnoremap Ô :m .+1<CR>==
