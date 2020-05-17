@@ -1,5 +1,6 @@
-install_dotfiles:
-	ansible-playbook dotfiles.yml -i local -vv -e curdir=$(CURDIR)
+dotfiles-install:
+	ln -s $(PWD)/files/gitconfig ~/.gitconfig | true
+	ln -s $(PWD)/files/gitignore_global ~/.gitignore_global | true
 
 nvim-install:
 	mkdir -p ~/.config/nvim
