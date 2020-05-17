@@ -27,7 +27,6 @@ Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -71,8 +70,8 @@ map <leader>vr :source $MYVIMRC<CR>
 
 """ Plugins Keymaps
 
-" nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
+nmap <leader>tf :NERDTreeFind<CR>
 
 """ Plugin Settings
 
@@ -165,3 +164,5 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 
 au FileType go nmap <leader>rv <Plug>(go-run-vertical)
 let g:go_def_mode = 'gopls'
+
+set termguicolors

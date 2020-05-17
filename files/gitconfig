@@ -1,5 +1,6 @@
 [user]
 	name = Aleksandr B. Ivanov
+	useConfigOnly = true
 [core]
 	excludesfile = /Users/radanisk/.gitignore_global
 	autocrlf = input
@@ -11,5 +12,8 @@
 	process = git-lfs filter-process
 [commit]
 	template = /Users/radanisk/.stCommitMsg
-[mergetool "nvim"]
-	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+
+[merge]
+  tool = vimdiff
+[mergetool "vimdiff"]
+   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
