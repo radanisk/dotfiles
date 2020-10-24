@@ -9,7 +9,7 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -57,7 +57,7 @@ set shiftwidth=2
 set updatetime=300
 set signcolumn=yes
 
-colorscheme jellybeans
+autocmd vimenter * colorscheme gruvbox
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>

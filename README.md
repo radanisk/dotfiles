@@ -8,12 +8,14 @@ These are config files to set up a system the way I like it.
 * Neovim
 * make
 * Git
+* Node.js
 
 ### Setup
 
 ```sh
 $ git clone git@github.com:radanisk/dotfiles.git
 $ cd dotfiles
+$ Install [vim-plug](https://github.com/junegunn/vim-plug)
 $ make nvim-install
 $ make dotfiles-install
 ```
