@@ -26,6 +26,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'rust-lang/rust.vim'
 
 call plug#end()
