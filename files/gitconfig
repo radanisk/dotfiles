@@ -4,8 +4,15 @@
 [core]
 	excludesfile = /Users/radanisk/.gitignore_global
 	autocrlf = input
-	editor = /usr/local/bin/nvim
+	editor = /opt/homebrew/bin/nvim
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

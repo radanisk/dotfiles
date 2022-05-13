@@ -1,11 +1,3 @@
 {
-  "solargraph.diagnostics": true,
-  "languageserver": {
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    }
-  },
-  "coc.preferences.extensionUpdateCheck": "daily"
+  "solargraph.diagnostics": true
 }

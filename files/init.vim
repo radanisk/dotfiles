@@ -20,14 +20,17 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'mattn/emmet-vim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'rust-lang/rust.vim'
+Plug 'slim-template/vim-slim'
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
@@ -127,10 +130,15 @@ let g:rails_projections = {
       \   },
       \   "spec/requests/*_spec.rb": {
       \      "command": "request",
-      \      "alternate": "app/controllers/{}_controller.rb",
+      \      "alternate": "app/api/{}.rb",
       \      "template": "require 'rails_helper'\n\n" .
       \        "RSpec.describe '{}' do\nend",
       \   },
+      \   "app/api/*.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb"
+      \      ]
+      \   }
       \ }
 
 nmap <silent> <leader>d <Plug>DashSearch
@@ -166,4 +174,4 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 au FileType go nmap <leader>rv <Plug>(go-run-vertical)
 let g:go_def_mode = 'gopls'
 
-set termguicolors
+set notermguicolors
