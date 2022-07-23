@@ -1,22 +1,18 @@
+lua require('plugins')
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
 Plug 'morhetz/gruvbox'
-Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'moll/vim-node'
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'ekalinin/Dockerfile.vim'
@@ -34,9 +30,8 @@ Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
-set nocompatible
-
 let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 language en_US
 " https://github.com/vim/vim/blob/master/runtime/doc/russian.txt
@@ -45,7 +40,6 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 
 set cursorline
 set hidden
-set number
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -57,8 +51,10 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 
-set updatetime=300
+set number
 set signcolumn=yes
+set updatetime=250
+set notermguicolors
 
 autocmd vimenter * colorscheme gruvbox
 
@@ -74,8 +70,8 @@ map <leader>vr :source $MYVIMRC<CR>
 
 """ Plugins Keymaps
 
-nmap <silent> <leader><leader> :NERDTreeToggle<CR>
-nmap <leader>tf :NERDTreeFind<CR>
+nnoremap <leader><leader> :NvimTreeToggle<CR>
+nmap <leader>tf :NvimTreeFindFile<CR>
 
 """ Plugin Settings
 
@@ -173,5 +169,3 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 
 au FileType go nmap <leader>rv <Plug>(go-run-vertical)
 let g:go_def_mode = 'gopls'
-
-set notermguicolors
