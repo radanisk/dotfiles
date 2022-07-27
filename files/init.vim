@@ -7,10 +7,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-commentary'
-Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'moll/vim-node'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
@@ -54,9 +51,9 @@ set shiftwidth=2
 set number
 set signcolumn=yes
 set updatetime=250
-set notermguicolors
+set termguicolors
 
-autocmd vimenter * colorscheme gruvbox
+colorscheme gruvbox
 
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
@@ -163,9 +160,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 au FileType go nmap <leader>rv <Plug>(go-run-vertical)
 let g:go_def_mode = 'gopls'

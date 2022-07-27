@@ -9,6 +9,13 @@ return require('packer').startup(function()
     },
     config = function() require('nvim-tree').setup {} end
   }
+  use {
+    'feline-nvim/feline.nvim',
+    after = "nvim-web-devicons",
+    config = function()
+      require('feline').setup()
+    end
+  }
 
   use { 'ntpeters/vim-better-whitespace' }
 
@@ -16,4 +23,12 @@ return require('packer').startup(function()
 
   use 'tpope/vim-surround'
   use 'dyng/ctrlsf.vim'
+  use { "ellisonleao/gruvbox.nvim" }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
 end)
