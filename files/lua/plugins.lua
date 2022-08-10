@@ -31,4 +31,6 @@ return require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+
+  use { 'jvirtanen/vim-hcl' }
 end)
