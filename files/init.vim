@@ -3,9 +3,6 @@ lua require('plugins')
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
@@ -72,8 +69,10 @@ nmap <leader>tf :NvimTreeFindFile<CR>
 
 """ Plugin Settings
 
-nnoremap <Leader>o :GFiles .<CR>
-nnoremap <leader>ff :Files<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <Leader>w :wa<CR>
 
 nmap <silent> // :nohlsearch<CR>

@@ -32,5 +32,15 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
   use { 'jvirtanen/vim-hcl' }
 end)
