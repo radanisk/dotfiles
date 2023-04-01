@@ -85,11 +85,6 @@ nmap <C-F>n <Plug>CtrlSFCwordPath
 nnoremap <C-F>t :CtrlSFToggle<CR>
 inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-augroup common
-  autocmd BufEnter * EnableStripWhitespaceOnSave
-augroup END
-let g:strip_whitespace_confirm=0
-
 augroup go
   autocmd!
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
@@ -112,18 +107,20 @@ let g:rails_projections = {
       \  "app/controllers/*_controller.rb": {
       \      "test": [
       \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
       \        "spec/controllers/{}_controller_spec.rb",
       \        "test/controllers/{}_controller_test.rb"
       \      ],
       \      "alternate": [
       \        "spec/requests/{}_spec.rb",
+      \        "spec/requests/{}_controller_spec.rb",
       \        "spec/controllers/{}_controller_spec.rb",
       \        "test/controllers/{}_controller_test.rb"
       \      ],
       \   },
       \   "spec/requests/*_spec.rb": {
       \      "command": "request",
-      \      "alternate": "app/api/{}.rb",
+      \      "alternate": "app/controllers/{}.rb",
       \      "template": "require 'rails_helper'\n\n" .
       \        "RSpec.describe '{}' do\nend",
       \   },
