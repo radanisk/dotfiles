@@ -1,6 +1,8 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use { 'tpope/vim-sensible' }
+  use { 'tpope/vim-fugitive' }
+  use { 'AndrewRadev/splitjoin.vim' }
   use 'tpope/vim-repeat'
   use {
     'kyazdani42/nvim-tree.lua',

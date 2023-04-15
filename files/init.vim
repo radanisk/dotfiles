@@ -4,21 +4,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'moll/vim-node'
 Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'jiangmiao/auto-pairs'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'slim-template/vim-slim'
-Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
