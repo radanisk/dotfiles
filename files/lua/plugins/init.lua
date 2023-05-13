@@ -28,16 +28,20 @@ return require('packer').startup(function()
   use { "ellisonleao/gruvbox.nvim" }
 
   use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use {
     'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup()
     end
   }
 
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
+  require('plugins.treesitter').run(use)
 
   use {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
@@ -45,4 +49,6 @@ return require('packer').startup(function()
   }
 
   use { 'jvirtanen/vim-hcl' }
+
+  use { 'tpope/vim-bundler' }
 end)

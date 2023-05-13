@@ -1,11 +1,8 @@
-lua require('plugins')
+lua require('plugins.init')
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-commentary'
-Plug 'moll/vim-node'
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'ekalinin/Dockerfile.vim'
 
@@ -83,7 +80,6 @@ augroup go
   autocmd!
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
-au BufNewFile,BufRead .env.* call dist#ft#SetFileTypeSH(getline(1))
 
 " Move lines up and down
 nnoremap Ô :m .+1<CR>==
@@ -95,8 +91,6 @@ vnoremap  :m '<-2<CR>gv=gv
 
 autocmd FileType vue syntax sync fromstart
 
-let g:splitjoin_ruby_curly_braces = 0
-let g:splitjoin_ruby_hanging_args = 0
 let g:rails_projections = {
       \  "app/controllers/*_controller.rb": {
       \      "test": [
