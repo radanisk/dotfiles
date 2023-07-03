@@ -118,7 +118,7 @@ require('lazy').setup({
     'j-hui/fidget.nvim',
     tag = 'legacy',
     opts = {},
-    dependecies = { { 'nvim-lsp-config'} }
+    dependencies = { { 'neovim/nvim-lspconfig' } }
   },
 
   { 'aklt/plantuml-syntax' },
