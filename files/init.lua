@@ -113,7 +113,17 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ":TSUpdate",
-  }
+  },
+  {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    opts = {},
+    dependecies = { { 'nvim-lsp-config'} }
+  },
+
+  { 'aklt/plantuml-syntax' },
+  { 'tyru/open-browser.vim' },
+  { 'weirongxu/plantuml-previewer.vim'},
 })
 
 vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
@@ -165,4 +175,4 @@ bind("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",
 --
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
 
-bind('n', '<leater>tf', ':NvimTreeFindFile<CR>')
+bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
