@@ -23,13 +23,6 @@ require('lazy').setup({
     dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
-        'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},     -- Required
@@ -135,7 +128,7 @@ vim.o.undofile = true
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
-  ensure_installed = { 'go', 'lua', 'ruby', 'vimdoc', 'vim' },
+  ensure_installed = { 'go', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
   endwise = { enable = true },
   highlight = { enable = true }, -- false will disable the whole extension
   -- indent = { enable = true },
@@ -148,7 +141,7 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
-lsp.ensure_installed({'solargraph'})
+lsp.setup_servers({'solargraph'})
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
