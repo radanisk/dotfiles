@@ -117,6 +117,10 @@ require('lazy').setup({
   { 'aklt/plantuml-syntax' },
   { 'tyru/open-browser.vim' },
   { 'weirongxu/plantuml-previewer.vim'},
+  {
+    'nvim-pack/nvim-spectre',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 })
 
 vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
@@ -160,6 +164,14 @@ bind("n", "<C-l>", "<C-w>l", opts)
 bind("n", "<C-h>", "<C-w>h", opts)
 bind("n", "<C-j>", "<C-w>j", opts)
 bind("n", "<C-k>", "<C-w>k", opts)
+
+-- Refactor with spectre
+bind('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = "Search current word"
+})
+bind('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = "Search current word"
+})
 
 bind("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 bind("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
