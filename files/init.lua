@@ -48,6 +48,32 @@ require('lazy').setup({
     end,
   },
   {
+    'akinsho/bufferline.nvim',
+    event = "VeryLazy",
+    keys = {
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+      { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+    },
+    opts = {
+      options = {
+        close_command = function(n) require("mini.bufremove").delete(n, false) end,
+        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        offsets = {
+          {
+            filetype = "NvimTree",
+            text = "File Explorer",
+	    highlight = "Directory",
+            text_align = "left",
+          },
+        },
+      }
+    },
+  },
+  {
     'freddiehaddad/feline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function() require('feline').setup() end
@@ -80,6 +106,13 @@ require('lazy').setup({
     config = function()
       require('gitsigns').setup()
     end
+  },
+  {
+    "echasnovski/mini.bufremove",
+    keys = {
+      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+    },
   },
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -152,6 +185,7 @@ opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.termguicolors = true
 opt.undofile = true
+opt.wrap = false
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
@@ -192,3 +226,6 @@ bind("n", "<C-k>", "<C-w>k", opts)
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
 
 bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
+
+bind("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+bind("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
