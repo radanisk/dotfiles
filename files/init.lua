@@ -62,6 +62,12 @@ require('lazy').setup({
       options = {
         close_command = function(n) require("mini.bufremove").delete(n, false) end,
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(_, _, diag)
+          local ret = (diag.error and " " .. diag.error .. " " or "")
+            .. (diag.warning and " " .. diag.warning or "")
+          return vim.trim(ret)
+        end,
         offsets = {
           {
             filetype = "NvimTree",
