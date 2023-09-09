@@ -17,8 +17,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.o.termguicolors = true
-
 require('lazy').setup({
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -143,12 +141,17 @@ require('lazy').setup({
   },
 })
 
-vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
-vim.wo.number = true
-vim.wo.signcolumn = 'yes'
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.undofile = true
+local opt = vim.opt
+
+opt.clipboard = "unnamedplus"
+opt.cursorline = true
+opt.ignorecase = true
+opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+opt.number = true
+opt.signcolumn = 'yes'
+opt.smartcase = true
+opt.termguicolors = true
+opt.undofile = true
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
