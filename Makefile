@@ -6,3 +6,4 @@ dotfiles-install:
 nvim-install:
 	mkdir -p ~/.config/nvim
 	ln -s $(PWD)/files/init.lua ~/.config/nvim/init.lua | true
+	ln -s $(PWD)/files/lazy-lock.json ~/.config/nvim/lazy-lock.json | true
