@@ -19,6 +19,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    build = "make install_jsregexp"
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     dependencies = {
