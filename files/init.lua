@@ -97,7 +97,16 @@ require('lazy').setup({
   },
   'ntpeters/vim-better-whitespace',
   'tpope/vim-sleuth',
-  'tpope/vim-rails',
+  {
+    'tpope/vim-rails',
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1352
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "eruby.yaml",
+        command = "set filetype=yaml"
+      })
+    end
+  },
   'tpope/vim-surround',
   {
     'ellisonleao/gruvbox.nvim',
@@ -130,7 +139,8 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       { "<leader>ff", function() require('telescope.builtin').find_files() end },
-      { "<leader>sg", function() require('telescope.builtin').live_grep() end },
+      { "<leader>sg", function() require('telescope.builtin').live_grep() end, desc = "Grep (root dir)" },
+      { "<leader>sG", function() require('telescope.builtin').live_grep({ cwd = false }) end, desc = "Grep (cwd)" },
       { "<leader>sb", function() require('telescope.builtin').buffers() end },
       { "<leader>sh", function() require('telescope.builtin').help_tags() end },
       { "<leader>sw", function() require('telescope.builtin').grep_string({ word_match = '-w' }) end, desc = "Word" },
@@ -196,11 +206,11 @@ opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.termguicolors = true
 opt.undofile = true
-opt.wrap = false
+opt.wrap = true
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
-  ensure_installed = { 'go', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
+  ensure_installed = { 'go', 'gomod', 'gowork', 'gosum', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
   endwise = { enable = true },
   highlight = { enable = true }, -- false will disable the whole extension
   -- indent = { enable = true },
@@ -213,7 +223,7 @@ lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
-lsp.setup_servers({'solargraph'})
+lsp.setup_servers({'solargraph', 'gopls'})
 
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
@@ -234,7 +244,7 @@ bind("n", "<C-j>", "<C-w>j", opts)
 bind("n", "<C-k>", "<C-w>k", opts)
 
 --
-bind('n', '<leader><leader>', ':NvimTreeToggle<CR>')
+bind('n', '<leader><leader>', ':NvimTreeToggle<CR>', { silent = true })
 
 bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
 
