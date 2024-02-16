@@ -18,24 +18,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp"
-  },
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-    }
-  },
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'hrsh7th/nvim-cmp'},
+  {'L3MON4D3/LuaSnip'},
 
   'tpope/vim-sensible',
   'tpope/vim-fugitive',
@@ -85,9 +72,9 @@ require('lazy').setup({
     },
   },
   {
-    'freddiehaddad/feline.nvim',
+    'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require('feline').setup() end
+    config = function() require('lualine').setup() end
   },
   {
     'nvim-zh/auto-save.nvim',
@@ -217,18 +204,11 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = { enable = true },
 }
 
-local lsp = require('lsp-zero').preset({})
-
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
+local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({buffer = bufnr})
 end)
-
-lsp.setup_servers({'solargraph', 'gopls'})
-
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
+lsp_zero.setup_servers({'solargraph', 'gopls'})
 
 local bind = vim.keymap.set
 local opts = { silent = true, noremap = true }
