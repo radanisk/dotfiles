@@ -16,6 +16,13 @@ vim.opt.cursorline = true
 
 vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -210,21 +217,8 @@ end)
 lsp_zero.setup_servers({'solargraph', 'gopls'})
 
 local bind = vim.keymap.set
-local opts = { silent = true, noremap = true }
 
-bind("n", "<leader>h", ":nohlsearch<CR>", opts)
-
-bind('n', '<leader>vr', ':so $MYVIMRC<CR>')
-
--- Better window movement
-bind("n", "<C-l>", "<C-w>l", opts)
-bind("n", "<C-h>", "<C-w>h", opts)
-bind("n", "<C-j>", "<C-w>j", opts)
-bind("n", "<C-k>", "<C-w>k", opts)
-
---
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>', { silent = true })
-
 bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
 
 bind("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
