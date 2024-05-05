@@ -1,8 +1,20 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.opt.number = true
+vim.opt.mouse = 'a'
+vim.opt.showmode = false
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.signcolumn = 'yes'
+vim.opt.cursorline = true
+
+vim.opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -181,19 +193,6 @@ require('lazy').setup({
     }
   },
 })
-
-local opt = vim.opt
-
-opt.clipboard = "unnamedplus"
-opt.cursorline = true
-opt.ignorecase = true
-opt.langmap = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
-opt.number = true
-opt.signcolumn = 'yes'
-opt.smartcase = true
-opt.termguicolors = true
-opt.undofile = true
-opt.wrap = true
 
 require('nvim-treesitter.configs').setup {
   auto_install = true,
