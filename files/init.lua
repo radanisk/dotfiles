@@ -229,6 +229,13 @@ require('lazy').setup({
         desc = "Quickfix List (Trouble)",
       },
     },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      scope = { show_start = false, show_end = false },
+    },
+    main = "ibl",
   }
 })
 
