@@ -37,6 +37,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      notifier = { enabled = true },
+    },
+    keys = {
+      { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History" },
+      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+    },
+  },
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/cmp-nvim-lsp'},
@@ -71,8 +83,8 @@ require('lazy').setup({
     },
     opts = {
       options = {
-        close_command = function(n) require("mini.bufremove").delete(n, false) end,
-        right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+        close_command = function(n) Snacks.bufdelete(n) end,
+        right_mouse_command = function(n) Snacks.bufdelete(n) end,
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(_, _, diag)
           local ret = (diag.error and " " .. diag.error .. " " or "")
@@ -123,15 +135,21 @@ require('lazy').setup({
   },
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  },
-  {
-    "echasnovski/mini.bufremove",
-    keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+    opts = {
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        map("n", "]h", function() gs.nav_hunk("next") end, "Next Hunk")
+        map("n", "[h", function() gs.nav_hunk("prev") end, "Prev Hunk")
+        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
+        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+      end,
     },
   },
   {
@@ -244,7 +262,6 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = { 'go', 'gomod', 'gowork', 'gosum', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
   endwise = { enable = true },
   highlight = { enable = true }, -- false will disable the whole extension
-  -- indent = { enable = true },
   incremental_selection = { enable = true },
 }
 
@@ -271,3 +288,5 @@ bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
 
 bind("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 bind("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+bind("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
+bind("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Delete Other Buffers" })
