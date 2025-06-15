@@ -8,22 +8,6 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = { enable = true },
 }
 
-local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(function(client, bufnr)
-  lsp_zero.default_keymaps({buffer = bufnr})
-  vim.keymap.set('n', "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, {desc = "Goto Definition", buffer = bufnr})
-  vim.keymap.set('n', "gr", "<cmd>Telescope lsp_references<cr>", {desc = "References", buffer = bufnr})
-  vim.keymap.set('n', "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, {desc = "Goto Implementation", buffer = bufnr })
-  vim.keymap.set('n', "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, {desc = "Goto T[y]pe Definition", buffer = bufnr })
-  vim.keymap.set('n', "gK", vim.lsp.buf.signature_help, {desc = "Signature Help", buffer = bufnr})
-  vim.keymap.set('i', "<c-k>", vim.lsp.buf.signature_help, {desc = "Signature Help", buffer = bufnr})
-  vim.keymap.set('n', "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action", buffer = bufnr})
-  vim.keymap.set('v', "<leader>ca", vim.lsp.buf.code_action, {desc = "Code Action", buffer = bufnr})
-  vim.keymap.set('n', "<leader>cA", function() vim.lsp.buf.code_action({context = {only = {"source"}, diagnostics = {}}}) end, { desc = "Source Action", buffer = bufnr })
-  vim.keymap.set('n', "<leader>cr", vim.lsp.buf.rename, {desc = "Rename", buffer = bufnr})
-end)
-lsp_zero.setup_servers({'solargraph', 'gopls'})
-
 local bind = vim.keymap.set
 
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>', { silent = true })
