@@ -3,7 +3,7 @@
   "auto-save.nvim": { "branch": "main", "commit": "4b59610e1318f8a89501cee9d47a0e8650f0a4d5" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "a8912b88ce488f411177fc8aed358b04dc246d7b" },
-  "codecompanion.nvim": { "branch": "main", "commit": "ac1c3c9d937eb90280eecd00efc12b1b9858b94f" },
+  "codecompanion.nvim": { "branch": "main", "commit": "621c734737801d9556cf0b50c27ef502a94b9cca" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "gitsigns.nvim": { "branch": "main", "commit": "731b581428ec6c1ccb451b95190ebbc6d7006db7" },
   "gruvbox.nvim": { "branch": "main", "commit": "00e38a379bab3389e187b3953566d67d494dfddd" },
