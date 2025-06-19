@@ -57,26 +57,27 @@ require("lazy").setup({
 })
 
 require("codecompanion").setup({
-  adapters = {
-    coder = function()
-      return require("codecompanion.adapters").extend("openai_compatible", {
-        schema = {
-          model = {
-            default = "coder",
-          },
-        },
-      })
-    end,
+  opts = {
+    language = "Russian",
   },
   strategies = {
     chat = {
-      adapter = "coder",
+      adapter = {
+        name = "ollama",
+        model = "coder",
+      },
     },
     inline = {
-      adapter = "coder",
+      adapter = {
+        name = "ollama",
+        model = "coder",
+      },
     },
     cmd = {
-      adapter = "coder",
+      adapter = {
+        name = "ollama",
+        model = "coder",
+      },
     }
   }
 })
