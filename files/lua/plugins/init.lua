@@ -32,10 +32,27 @@ return {
       { "<leader>cr", vim.lsp.buf.rename, desc = "Rename" },
     }
   },
-  {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-  {'L3MON4D3/LuaSnip'},
-
+  {
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      keymap = { preset = 'default' },
+      appearance = {
+        nerd_font_variant = 'mono'
+      },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200
+        },
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+    },
+    opts_extend = { "sources.default" },
+  },
   'tpope/vim-sensible',
   'tpope/vim-fugitive',
   'AndrewRadev/splitjoin.vim',
@@ -161,20 +178,10 @@ return {
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    dependencies = {
-      'hrsh7th/nvim-cmp',
-      'nvim-treesitter/nvim-treesitter',
-    },
     config = function ()
       require('nvim-autopairs').setup({
         check_ts = true
       })
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
     end,
   },
   {
@@ -248,7 +255,14 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
-    opts = {},
+    opts = {
+      language = "Russian",
+      strategies = {
+        chat = { adapter = { name = "ollama", model = "coder" } },
+        inline = { adapter = { name = "ollama", model = "coder" } },
+        cmd = { adapter = { name = "ollama", model = "coder" } }
+      },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",

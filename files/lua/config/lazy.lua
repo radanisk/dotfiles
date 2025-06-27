@@ -29,6 +29,7 @@ vim.opt.mouse = 'a'
 vim.opt.showmode = false
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.undofile = true
+vim.opt.updatetime = 200
 vim.opt.ignorecase = true
 vim.opt.laststatus = 3
 vim.opt.smartcase = true
@@ -55,30 +56,4 @@ require("lazy").setup({
   install = { colorscheme = { "gruvbox" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
-})
-
-require("codecompanion").setup({
-  opts = {
-    language = "Russian",
-  },
-  strategies = {
-    chat = {
-      adapter = {
-        name = "ollama",
-        model = "coder",
-      },
-    },
-    inline = {
-      adapter = {
-        name = "ollama",
-        model = "coder",
-      },
-    },
-    cmd = {
-      adapter = {
-        name = "ollama",
-        model = "coder",
-      },
-    }
-  }
 })
