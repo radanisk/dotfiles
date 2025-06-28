@@ -191,6 +191,17 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ":TSUpdate",
+    config = function ()
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+        ensure_installed = { 'go', 'gomod', 'gowork', 'gosum', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
+        endwise = { enable = true },
+        highlight = { enable = true }, -- false will disable the whole extension
+        incremental_selection = { enable = true },
+        indent = { enable = true },
+      })
+    end
   },
   {
     'j-hui/fidget.nvim',

@@ -1,13 +1,5 @@
 require("config.lazy")
 
-require('nvim-treesitter.configs').setup {
-  auto_install = true,
-  ensure_installed = { 'go', 'gomod', 'gowork', 'gosum', 'lua', 'ruby', 'vimdoc', 'vim', 'yaml' },
-  endwise = { enable = true },
-  highlight = { enable = true }, -- false will disable the whole extension
-  incremental_selection = { enable = true },
-}
-
 local bind = vim.keymap.set
 
 bind('n', '<leader><leader>', ':NvimTreeToggle<CR>', { silent = true })
