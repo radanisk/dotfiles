@@ -293,6 +293,7 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    version = '*',
     opts = {
       language = "Russian",
       strategies = {
