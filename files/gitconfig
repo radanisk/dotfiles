@@ -5,7 +5,15 @@
 	excludesfile = /Users/radanisk/.gitignore_global
 	autocrlf = input
 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	syntax-theme = none
+	navigate = true
+	line-numbers = true
 [merge]
+	conflictStyle = zdiff3
 	tool = vimdiff
 [mergetool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

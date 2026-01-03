@@ -93,7 +93,7 @@ return {
           {
             filetype = "NvimTree",
             text = "File Explorer",
-	    highlight = "Directory",
+            highlight = "Directory",
             text_align = "left",
           },
         },
