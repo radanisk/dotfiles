@@ -44,3 +44,7 @@ This repository contains configurations for:
 * **Tmux**: Tmux configuration for improved terminal workflow with vim-like key bindings and plugins.
 
 The installation uses a Makefile to symlink the configuration files to their appropriate locations in the home directory.
+
+## Neovim structure
+
+Plugin specs live under `files/lua/plugins/` and are grouped by domain (ui, lsp, git, editing, tools, languages, markdown). Core Neovim setup lives under `files/lua/config/`.
