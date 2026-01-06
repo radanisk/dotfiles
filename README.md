@@ -1,6 +1,6 @@
-# Aleksandr B. Ivanov's dotfiles
+# Dotfiles
 
-This repository contains configuration files (dotfiles) to set up a development environment the way I like it. It primarily focuses on configuring Neovim, Git, and tmux.
+Personal configuration for Neovim, Git, and tmux.
 
 ## Requirements
 
@@ -10,20 +10,23 @@ This repository contains configuration files (dotfiles) to set up a development 
 * Git
 * Node.js (for some Neovim plugins)
 * tmux
+* git-lfs (if you use LFS-enabled repos)
 
 ## Setup
 
 1. Clone the repository: `git clone git@github.com:radanisk/dotfiles.git`
 2. Navigate to the repository: `cd dotfiles`
 3. (Optional) Check dependencies: `make doctor`
-4. Install Neovim plugins and configurations: `make nvim-install`
-5. Install other dotfiles (gitconfig, tmux.conf, etc.): `make dotfiles-install`
+4. Install Neovim config: `make nvim-install`
+5. Install Git/tmux configs: `make dotfiles-install`
+
+## Installation behavior
+
+Symlinks are created via `scripts/link.sh`, which is idempotent and makes a timestamped backup if a target already exists. You can preview changes with `DRY_RUN=1 make dotfiles-install`.
 
 ## Local Git config
 
 This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
-
-You can copy the template:
 
 ```
 cp files/gitconfig.local.example ~/.gitconfig.local
@@ -31,20 +34,6 @@ cp files/gitconfig.local.example ~/.gitconfig.local
 
 `make dotfiles-install` will create `~/.gitconfig.local` from the template if it does not exist.
 
-## Diagnostics
+## Install behavior
 
-Run `make doctor` to verify required tools are installed (Neovim, Git, tmux, Node.js, ripgrep, git-delta) and check for tmux TPM.
-
-## Overview
-
-This repository contains configurations for:
-
-* **Neovim**: A highly customized Neovim setup with a plugin manager (`lazy.nvim`), LSP support, treesitter, and various plugins for enhanced development experience.
-* **Git**: Git configuration settings for user identity, core settings, merge tools, and LFS.
-* **Tmux**: Tmux configuration for improved terminal workflow with vim-like key bindings and plugins.
-
-The installation uses a Makefile to symlink the configuration files to their appropriate locations in the home directory.
-
-## Neovim structure
-
-Plugin specs live under `files/lua/plugins/` and are grouped by domain (ui, lsp, git, editing, tools, languages, markdown). Core Neovim setup lives under `files/lua/config/`.
+Symlinks are created via `scripts/link.sh`, which is idempotent and makes a timestamped backup if a target already exists. Preview changes with `DRY_RUN=1 make dotfiles-install`.

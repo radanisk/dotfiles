@@ -1,14 +1,13 @@
 dotfiles-install:
-	ln -s $(PWD)/files/gitconfig ~/.gitconfig | true
-	ln -s $(PWD)/files/gitignore_global ~/.gitignore_global | true
-	ln -s $(PWD)/files/tmux.conf ~/.tmux.conf | true
+	./scripts/link.sh $(PWD)/files/gitconfig ~/.gitconfig
+	./scripts/link.sh $(PWD)/files/gitignore_global ~/.gitignore_global
+	./scripts/link.sh $(PWD)/files/tmux.conf ~/.tmux.conf
 	test -e ~/.gitconfig.local || cp $(PWD)/files/gitconfig.local.example ~/.gitconfig.local
 
 nvim-install:
-	mkdir -p ~/.config/nvim
-	ln -s $(PWD)/files/init.lua ~/.config/nvim/init.lua | true
-	test -e ~/.config/nvim/lua || ln -s $(PWD)/files/lua ~/.config/nvim/lua
-	ln -s $(PWD)/files/lazy-lock.json ~/.config/nvim/lazy-lock.json | true
+	./scripts/link.sh $(PWD)/files/init.lua ~/.config/nvim/init.lua
+	./scripts/link.sh $(PWD)/files/lua ~/.config/nvim/lua
+	./scripts/link.sh $(PWD)/files/lazy-lock.json ~/.config/nvim/lazy-lock.json
 
 doctor:
 	@status=0; \
