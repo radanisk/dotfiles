@@ -1,8 +1,9 @@
 [user]
-	name = Aleksandr B. Ivanov
 	useConfigOnly = true
+[include]
+	path = ~/.gitconfig.local
 [core]
-	excludesfile = /Users/radanisk/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	editor = nvim
 	pager = delta

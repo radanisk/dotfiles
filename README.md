@@ -18,6 +18,18 @@ This repository contains configuration files (dotfiles) to set up a development 
 3. Install Neovim plugins and configurations: `make nvim-install`
 4. Install other dotfiles (gitconfig, tmux.conf, etc.): `make dotfiles-install`
 
+## Local Git config
+
+This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
+
+You can copy the template:
+
+```
+cp files/gitconfig.local.example ~/.gitconfig.local
+```
+
+`make dotfiles-install` will create `~/.gitconfig.local` from the template if it does not exist.
+
 ## Overview
 
 This repository contains configurations for:
