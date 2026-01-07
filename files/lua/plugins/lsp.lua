@@ -1,5 +1,17 @@
 return {
   {
+    'williamboman/mason.nvim',
+    opts = {},
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = { 'williamboman/mason.nvim' },
+    opts = {
+      ensure_installed = { 'gopls', 'solargraph' },
+      automatic_installation = true,
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       vim.lsp.enable('gopls')
