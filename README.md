@@ -20,10 +20,6 @@ Personal configuration for Neovim, Git, and tmux.
 4. Install Neovim config: `make nvim-install`
 5. Install Git/tmux configs: `make dotfiles-install`
 
-## Installation behavior
-
-Symlinks are created via `scripts/link.sh`, which is idempotent and makes a timestamped backup if a target already exists. You can preview changes with `DRY_RUN=1 make dotfiles-install`.
-
 ## Local Git config
 
 This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
