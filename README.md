@@ -32,6 +32,13 @@ Optional:
 * `files/lua/config/` contains options, keymaps, and lazy.nvim bootstrap
 * `files/lua/plugins/` holds plugin specs grouped by domain (ui, lsp, git, editing, tools, languages, markdown)
 
+## Typical tasks
+
+* Add a plugin: edit `files/lua/plugins/<domain>.lua`, then run `:Lazy sync` in Neovim
+* Change keymaps: edit `files/lua/config/keymaps.lua`
+* Change options: edit `files/lua/config/options.lua`
+* Update plugin lockfile: run `:Lazy sync`
+
 ## Local Git config
 
 This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
