@@ -4,13 +4,19 @@ Personal configuration for Neovim, Git, and tmux.
 
 ## Requirements
 
+Required:
 * Linux or macOS
 * Neovim (latest stable recommended)
 * make
 * Git
 * Node.js (for some Neovim plugins)
 * tmux
-* git-lfs (if you use LFS-enabled repos)
+* ripgrep (`rg`)
+* git-delta (`delta`)
+
+Optional:
+* git-lfs (for LFS-enabled repos)
+* tmux TPM (`~/.tmux/plugins/tpm/tpm`)
 
 ## Setup
 
