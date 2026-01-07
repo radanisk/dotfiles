@@ -20,6 +20,12 @@ Personal configuration for Neovim, Git, and tmux.
 4. Install Neovim config: `make nvim-install`
 5. Install Git/tmux configs: `make dotfiles-install`
 
+## Neovim layout
+
+* `files/init.lua` loads core config
+* `files/lua/config/` contains options, keymaps, and lazy.nvim bootstrap
+* `files/lua/plugins/` holds plugin specs grouped by domain (ui, lsp, git, editing, tools, languages, markdown)
+
 ## Local Git config
 
 This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
