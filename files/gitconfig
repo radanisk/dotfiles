@@ -7,6 +7,9 @@
 	autocrlf = input
 	editor = nvim
 	pager = delta
+[fetch]
+	prune = true
+	pruneTags = true
 [interactive]
 	diffFilter = delta --color-only
 [delta]
@@ -19,7 +22,15 @@
 [mergetool "vimdiff"]
 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [pull]
-	rebase = false
+	ff = only
+	rebase = true
+[push]
+	autoSetupRemote = true
+[rebase]
+	autoStash = true
+[rerere]
+	enabled = true
+	autoupdate = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
