@@ -36,6 +36,10 @@ cp files/gitconfig.local.example ~/.gitconfig.local
 
 `make dotfiles-install` will create `~/.gitconfig.local` from the template if it does not exist.
 
+## Preferences
+
+This repo favors keeping configuration as consistent as possible across machines. Local overrides are used only to keep personal identity out of the repo; otherwise they are avoided to keep behavior uniform.
+
 ## Install behavior
 
 Symlinks are created via `scripts/link.sh`, which is idempotent and makes a timestamped backup if a target already exists. Preview changes with `DRY_RUN=1 make dotfiles-install`.
