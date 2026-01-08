@@ -39,7 +39,7 @@ cp files/gitconfig.local.example ~/.gitconfig.local
 ## Preferences
 
 This repo favors keeping configuration as consistent as possible across machines. Local overrides are used only to keep personal identity out of the repo; otherwise they are avoided to keep behavior uniform.
-Deployment automation is intentionally minimal; the primary focus is improving the actual application configurations.
+Deployment automation is intentionally minimal; the primary focus is improving the actual application configurations to support UX/DX and a stable daily workflow for a single user.
 
 ## Install behavior
 
