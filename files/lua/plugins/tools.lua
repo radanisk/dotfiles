@@ -21,20 +21,4 @@ return {
   },
   { 'tyru/open-browser.vim' },
   { 'weirongxu/plantuml-previewer.vim' },
-  {
-    "olimorris/codecompanion.nvim",
-    version = '*',
-    opts = {
-      language = "Russian",
-      strategies = {
-        chat = { adapter = { name = "ollama", model = "coder" } },
-        inline = { adapter = { name = "ollama", model = "coder" } },
-        cmd = { adapter = { name = "ollama", model = "coder" } }
-      },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
 }

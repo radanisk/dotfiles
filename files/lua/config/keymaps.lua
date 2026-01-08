@@ -18,9 +18,3 @@ bind('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 bind('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 bind('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
 bind('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
-
-vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
