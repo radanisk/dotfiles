@@ -17,8 +17,6 @@ Required:
 * ripgrep (`rg`)
 * git-delta (`delta`)
 
-Optional:
-
 ## Setup
 
 1. Clone the repository: `git clone git@github.com:radanisk/dotfiles.git`
