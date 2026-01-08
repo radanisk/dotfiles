@@ -14,6 +14,21 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      vim.diagnostic.config({
+        virtual_text = {
+          severity = vim.diagnostic.severity.ERROR,
+          source = 'if_many',
+        },
+        float = {
+          border = 'rounded',
+          source = 'if_many',
+        },
+      })
+
+      vim.lsp.config('solargraph', {
+        cmd = { 'mise', 'exec', '--', 'solargraph', 'stdio' }
+      })
+
       vim.lsp.enable('gopls')
       vim.lsp.enable('solargraph')
     end,
