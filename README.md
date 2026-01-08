@@ -5,7 +5,7 @@ Personal configuration for Neovim, Git, and tmux.
 ## Requirements
 
 Required:
-* Linux or macOS
+* macOS
 * Neovim (latest stable recommended)
 * make
 * Git
@@ -22,9 +22,8 @@ Optional:
 
 1. Clone the repository: `git clone git@github.com:radanisk/dotfiles.git`
 2. Navigate to the repository: `cd dotfiles`
-3. (Optional) Check dependencies: `make doctor`
-4. Install Neovim config: `make nvim-install`
-5. Install Git/tmux configs: `make dotfiles-install`
+3. Install Neovim config: `make nvim-install`
+4. Install Git/tmux configs: `make dotfiles-install`
 
 ## Local Git config
 
