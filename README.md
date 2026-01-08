@@ -7,6 +7,7 @@ Personal configuration for Neovim, Git, and tmux.
 Required:
 * macOS
 * Neovim (latest stable recommended)
+* mise
 * make
 * Git
 * Node.js (for some Neovim plugins)
@@ -15,7 +16,6 @@ Required:
 * git-delta (`delta`)
 
 Optional:
-* git-lfs (for LFS-enabled repos)
 * tmux TPM (`~/.tmux/plugins/tpm/tpm`)
 
 ## Setup
