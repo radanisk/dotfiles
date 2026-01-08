@@ -12,11 +12,12 @@ Required:
 * Git
 * Node.js (for some Neovim plugins)
 * tmux
+* tmux TPM (`~/.tmux/plugins/tpm/tpm`)
+* Nerd Font (for UI icons in Neovim)
 * ripgrep (`rg`)
 * git-delta (`delta`)
 
 Optional:
-* tmux TPM (`~/.tmux/plugins/tpm/tpm`)
 
 ## Setup
 

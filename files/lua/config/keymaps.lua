@@ -4,7 +4,6 @@ bind('n', '<leader><leader>', ':NvimTreeToggle<CR>', { silent = true })
 bind('n', '<leader>tf', ':NvimTreeFindFile<CR>')
 
 bind("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-bind("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 bind("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
 bind("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Delete Other Buffers" })
 

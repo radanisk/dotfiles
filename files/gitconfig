@@ -13,7 +13,7 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
-	syntax-theme = none
+	syntax-theme = gruvbox-dark
 	navigate = true
 	line-numbers = true
 [merge]

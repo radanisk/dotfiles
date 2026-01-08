@@ -4,8 +4,7 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       { "<leader>ff", function() require('telescope.builtin').find_files() end },
-      { "<leader>sg", function() require('telescope.builtin').live_grep() end, desc = "Grep (root dir)" },
-      { "<leader>sG", function() require('telescope.builtin').live_grep({ cwd = false }) end, desc = "Grep (cwd)" },
+      { "<leader>sg", function() require('telescope.builtin').live_grep() end, desc = "Grep" },
       { "<leader>sb", function() require('telescope.builtin').buffers() end },
       { "<leader>sh", function() require('telescope.builtin').help_tags() end },
       { "<leader>sw", function() require('telescope.builtin').grep_string({ word_match = '-w' }) end, desc = "Word" },
