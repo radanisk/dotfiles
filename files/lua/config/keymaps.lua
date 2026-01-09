@@ -1,7 +1,7 @@
 local bind = vim.keymap.set
 
-bind('n', '<leader>fe', ':NvimTreeToggle<CR>', { silent = true })
-bind('n', '<leader>fE', ':NvimTreeFindFile<CR>')
+bind('n', '<leader>fe', ':NvimTreeToggle<CR>', { silent = true, desc = 'Toggle File Explorer' })
+bind('n', '<leader>fr', ':NvimTreeFindFile<CR>', { desc = 'Reveal File in Explorer' })
 
 bind("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 bind("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
