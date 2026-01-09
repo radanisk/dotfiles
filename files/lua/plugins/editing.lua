@@ -6,16 +6,12 @@ return {
     'nvim-zh/auto-save.nvim',
     config = function ()
       require('auto-save').setup({
-        trigger_events = { 'InsertLeave', 'TextChanged' },
+        trigger_events = { 'InsertLeave', 'BufLeave', 'FocusLost' },
         debounce_delay = 150,
-        execution_message = {
-          message = function()
-            return 'AutoSave'
-          end,
-          dim = 0.18,
-          cleaning_interval = 1500,
-        },
         condition = function(buf)
+          if not vim.api.nvim_buf_is_valid(buf) then
+            return false
+          end
           local bo = vim.bo[buf]
           if not bo.modifiable or bo.buftype ~= '' then
             return false
