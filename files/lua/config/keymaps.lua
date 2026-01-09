@@ -9,11 +9,6 @@ bind("n", "<leader>bo", function() Snacks.bufdelete.other() end, { desc = "Delet
 
 bind('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-bind('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-bind('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-bind('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-bind('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 bind('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 bind('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
 bind('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })

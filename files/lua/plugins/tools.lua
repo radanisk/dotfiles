@@ -11,6 +11,7 @@ return {
       { "<leader>sw", function() require('telescope.builtin').grep_string() end, mode = "v", desc = "Selection" },
     },
   },
+  'christoomey/vim-tmux-navigator',
   {
     'nvim-pack/nvim-spectre',
     dependencies = { 'nvim-lua/plenary.nvim' },
