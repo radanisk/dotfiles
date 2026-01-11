@@ -13,9 +13,10 @@ Required:
 * Node.js (for some Neovim plugins)
 * tmux
 * tmux TPM (`~/.tmux/plugins/tpm/tpm`)
-* Nerd Font (for UI icons in Neovim)
+* Nerd Font (for UI icons in Neovim and tmux statusline)
 * ripgrep (`rg`)
 * git-delta (`delta`)
+* Ghostty (optional; only if you use the terminal config)
 
 ## Setup
 
