@@ -63,7 +63,7 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup {
-        options = { globalstatus = true },
+        options = { globalstatus = vim.o.laststatus == 3 },
         sections = {
           lualine_c = {
             { 'filename', path = 1 },

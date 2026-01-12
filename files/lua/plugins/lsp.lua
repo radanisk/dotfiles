@@ -13,6 +13,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    version = "*",
     config = function()
       vim.diagnostic.config({
         virtual_text = {

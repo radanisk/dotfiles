@@ -6,3 +6,6 @@ tags
 gems.tags
 *.retry
 .solargraph.yml
+mise.toml
+QWEN.md
+.docs/

@@ -13,7 +13,7 @@ Required:
 * Node.js (for some Neovim plugins)
 * tmux
 * tmux TPM (`~/.tmux/plugins/tpm/tpm`)
-* Nerd Font (for UI icons in Neovim and tmux statusline)
+* Nerd Font with Powerline symbols (for UI icons in Neovim and tmux statusline)
 * ripgrep (`rg`)
 * git-delta (`delta`)
 * Ghostty (optional; only if you use the terminal config)
@@ -34,12 +34,3 @@ cp files/gitconfig.local.example ~/.gitconfig.local
 ```
 
 `make dotfiles-install` will create `~/.gitconfig.local` from the template if it does not exist.
-
-## Preferences
-
-This repo favors keeping configuration as consistent as possible across machines. Local overrides are used only to keep personal identity out of the repo; otherwise they are avoided to keep behavior uniform.
-Deployment automation is intentionally minimal; the primary focus is improving the actual application configurations to support UX/DX and a stable daily workflow for a single user.
-
-## Install behavior
-
-Symlinks are created via `scripts/link.sh`, which is idempotent and makes a timestamped backup if a target already exists. Preview changes with `DRY_RUN=1 make dotfiles-install`.
