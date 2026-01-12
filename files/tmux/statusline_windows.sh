@@ -46,6 +46,7 @@ tmux list-windows -F "#{window_index} #{window_active} #{window_name}" |
           name[NR] = name[NR] " " $i
         }
       }
+      gsub(/#/, "##", name[NR])
     }
     END {
       if (NR > 0 && sep != "") {

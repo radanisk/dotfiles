@@ -11,4 +11,4 @@ bind('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 bind('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 bind('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
-bind('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+bind('n', '<leader>xd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
