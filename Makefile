@@ -1,3 +1,6 @@
+deps-install:
+	./scripts/install-deps.sh
+
 dotfiles-install:
 	./scripts/link.sh $(PWD)/files/gitconfig ~/.gitconfig
 	./scripts/link.sh $(PWD)/files/gitignore_global ~/.gitignore_global

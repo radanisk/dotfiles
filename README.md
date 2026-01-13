@@ -2,28 +2,20 @@
 
 Personal configuration for Neovim, Git, and tmux.
 
-## Requirements
+## Prerequisites
 
-Required:
 * macOS
-* Neovim (latest stable recommended)
-* mise
-* make
+* Homebrew
 * Git
-* Node.js (for some Neovim plugins)
-* tmux
-* tmux TPM (`~/.tmux/plugins/tpm/tpm`)
-* Nerd Font with Powerline symbols (for UI icons in Neovim and tmux statusline)
-* ripgrep (`rg`)
-* git-delta (`delta`)
-* Ghostty (optional; only if you use the terminal config)
+* make
 
 ## Setup
 
 1. Clone the repository: `git clone git@github.com:radanisk/dotfiles.git`
 2. Navigate to the repository: `cd dotfiles`
-3. Install Neovim config: `make nvim-install`
-4. Install Git/tmux configs: `make dotfiles-install`
+3. Install dependencies: `make deps-install`
+4. Install Neovim config: `make nvim-install`
+5. Install Git/tmux configs: `make dotfiles-install`
 
 ## Local Git config
 
