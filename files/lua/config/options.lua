@@ -10,6 +10,7 @@ vim.opt.showmode = false
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 vim.opt.clipboard = 'unnamedplus'
+vim.g.clipboard = 'osc52'
 vim.opt.undofile = true
 vim.opt.updatetime = 200
 vim.opt.ignorecase = true
