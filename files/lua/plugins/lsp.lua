@@ -7,7 +7,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      ensure_installed = { 'gopls', 'solargraph' },
+      ensure_installed = { 'gopls' },
       automatic_installation = true,
     },
   },

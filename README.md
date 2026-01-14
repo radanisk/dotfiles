@@ -1,13 +1,15 @@
 # Dotfiles
 
-Personal configuration for Neovim, Git, and tmux.
+Personal configuration for Neovim, Git, tmux, and Ghostty.
 
 ## Prerequisites
 
-* macOS
+* macOS (deps installer is macOS-only)
 * Homebrew
 * Git
 * make
+
+`make deps-install` installs the remaining dependencies via Homebrew (including a Nerd Font for tmux glyphs). See `scripts/install-deps.sh` for the full list.
 
 ## Setup
 
@@ -15,7 +17,12 @@ Personal configuration for Neovim, Git, and tmux.
 2. Navigate to the repository: `cd dotfiles`
 3. Install dependencies: `make deps-install`
 4. Install Neovim config: `make nvim-install`
-5. Install Git/tmux configs: `make dotfiles-install`
+5. Install Git/tmux/Ghostty configs: `make dotfiles-install`
+
+## Update
+
+Run `make update` to update Homebrew packages/casks, tmux plugins (TPM),
+and Neovim plugins (Lazy).
 
 ## Local Git config
 

@@ -9,18 +9,14 @@ return {
     keys = {
       { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
+      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
     },
   },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    cmd = {
-      "NvimTreeToggle",
-      "NvimTreeFindFile",
-      "NvimTreeOpen",
-      "NvimTreeClose",
-      "NvimTreeFocus",
-    },
+    lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
