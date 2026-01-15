@@ -26,7 +26,7 @@ and Neovim plugins (Lazy).
 
 ## Local Git config
 
-This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email.
+This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email. The template contains commented placeholders, so you must edit it before your first commit.
 
 ```
 cp files/gitconfig.local.example ~/.gitconfig.local

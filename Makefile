@@ -7,7 +7,10 @@ dotfiles-install:
 	./scripts/link.sh $(PWD)/files/tmux.conf ~/.tmux.conf
 	./scripts/link.sh $(PWD)/files/tmux/statusline_windows.sh ~/.config/tmux/statusline_windows.sh
 	./scripts/link.sh $(PWD)/files/ghostty/config ~/.config/ghostty/config
-	test -e ~/.gitconfig.local || cp $(PWD)/files/gitconfig.local.example ~/.gitconfig.local
+	@if [ ! -e ~/.gitconfig.local ]; then \
+		cp $(PWD)/files/gitconfig.local.example ~/.gitconfig.local; \
+		echo "NOTICE: Created ~/.gitconfig.local. Set user.name and user.email before committing."; \
+	fi
 
 nvim-install:
 	./scripts/link.sh $(PWD)/files/init.lua ~/.config/nvim/init.lua

@@ -8,7 +8,6 @@ return {
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
       ensure_installed = { 'gopls' },
-      automatic_installation = true,
     },
   },
   {
@@ -24,12 +23,20 @@ return {
         },
       })
 
-      vim.lsp.config('solargraph', {
-        cmd = { 'mise', 'exec', '--', 'solargraph', 'stdio' }
-      })
+      local function has_solargraph()
+        if vim.fn.executable('mise') ~= 1 then
+          return false
+        end
 
-      vim.lsp.enable('gopls')
-      vim.lsp.enable('solargraph')
+        vim.fn.system({ 'mise', 'which', 'solargraph' })
+        return vim.v.shell_error == 0
+      end
+
+      if has_solargraph() then
+        require('lspconfig').solargraph.setup({
+          cmd = { 'mise', 'exec', '--', 'solargraph', 'stdio' }
+        })
+      end
     end,
     keys = {
       { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
