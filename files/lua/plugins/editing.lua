@@ -6,7 +6,7 @@ return {
     'nvim-zh/auto-save.nvim',
     config = function ()
       require('auto-save').setup({
-        trigger_events = { 'InsertLeave' },
+        trigger_events = { 'TextChanged', 'TextChangedI' },
         debounce_delay = 150,
         condition = function(buf)
           if not vim.api.nvim_buf_is_valid(buf) then

@@ -89,6 +89,21 @@ ensure_cmds \
 brew_install_cask ghostty
 brew_install_cask font-meslo-lg-nerd-font
 
+ensure_tmux_terminfo() {
+  if infocmp tmux-256color >/dev/null 2>&1; then
+    echo "OK: terminfo tmux-256color available"
+    return 0
+  fi
+
+  echo "INFO: installing tmux-256color terminfo (ncurses + tic)"
+  brew_install ncurses
+  prefix="$(brew --prefix)"
+  run mkdir -p "${HOME}/.terminfo"
+  run tic -x -o "${HOME}/.terminfo" "${prefix}/share/terminfo/t/tmux-256color"
+}
+
+ensure_tmux_terminfo
+
 TPM_ROOT="${HOME}/.tmux/plugins"
 TPM_DIR="${TPM_ROOT}/tpm"
 
