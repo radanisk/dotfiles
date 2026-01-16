@@ -46,7 +46,7 @@ return {
       { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
       { "K", function() return vim.lsp.buf.hover() end, desc = "Hover" },
       { "gK", function() return vim.lsp.buf.signature_help() end, desc = "Signature Help" },
-      { "<c-k>", function() return vim.lsp.buf.signature_help() end, mode = "i", desc = "Signature Help" },
+      { "<C-_>", function() return vim.lsp.buf.signature_help() end, mode = "i", desc = "Signature Help" },
       { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
       { "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "v" } },
       { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" } },
