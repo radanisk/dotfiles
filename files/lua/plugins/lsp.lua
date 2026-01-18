@@ -120,10 +120,4 @@ return {
       })
     end
   },
-  {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    opts = {},
-    dependencies = { { 'neovim/nvim-lspconfig' } }
-  },
 }
