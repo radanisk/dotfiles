@@ -7,7 +7,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      ensure_installed = { 'gopls' },
+      ensure_installed = { 'gopls', 'solargraph' },
     },
   },
   {
@@ -23,20 +23,6 @@ return {
         },
       })
 
-      local function has_solargraph()
-        if vim.fn.executable('mise') ~= 1 then
-          return false
-        end
-
-        vim.fn.system({ 'mise', 'which', 'solargraph' })
-        return vim.v.shell_error == 0
-      end
-
-      if has_solargraph() then
-        require('lspconfig').solargraph.setup({
-          cmd = { 'mise', 'exec', '--', 'solargraph', 'stdio' }
-        })
-      end
     end,
     keys = {
       { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
@@ -119,5 +105,10 @@ return {
         indent = { enable = true },
       })
     end
+  },
+  {
+    'j-hui/fidget.nvim',
+    opts = {},
+    dependencies = { { 'neovim/nvim-lspconfig' } }
   },
 }
