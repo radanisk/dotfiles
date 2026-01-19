@@ -5,7 +5,6 @@ dotfiles-install:
 	./scripts/link.sh $(PWD)/files/gitconfig ~/.gitconfig
 	./scripts/link.sh $(PWD)/files/gitignore_global ~/.gitignore_global
 	./scripts/link.sh $(PWD)/files/tmux.conf ~/.tmux.conf
-	./scripts/link.sh $(PWD)/files/tmux/statusline_windows.sh ~/.config/tmux/statusline_windows.sh
 	./scripts/link.sh $(PWD)/files/ghostty/config ~/.config/ghostty/config
 	@if [ ! -e ~/.gitconfig.local ]; then \
 		cp $(PWD)/files/gitconfig.local.example ~/.gitconfig.local; \
