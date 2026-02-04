@@ -5,3 +5,4 @@
 tags
 gems.tags
 *.retry
+mise.local.toml

@@ -79,7 +79,6 @@ ensure_brew
 
 ensure_cmds \
   "git:git" \
-  "mise:mise" \
   "nvim:neovim" \
   "node:node" \
   "rg:ripgrep" \

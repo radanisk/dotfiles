@@ -6,3 +6,5 @@ font-size = 13
 
 # Built-in Gruvbox theme.
 theme = Gruvbox Dark
+
+working-directory = home

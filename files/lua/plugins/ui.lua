@@ -4,14 +4,25 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      notifier = { enabled = true },
+      notifier = { enabled = false },
     },
     keys = {
-      { "<leader>n", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-      { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
       { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
     },
+  },
+  {
+    'rcarriga/nvim-notify',
+    lazy = false,
+    keys = {
+      { "<leader>n", "<cmd>Notifications<cr>", desc = "Notification History" },
+      { "<leader>un", "<cmd>NotificationsClear<cr>", desc = "Dismiss All Notifications" },
+    },
+    config = function()
+      local notify = require('notify')
+      notify.setup()
+      vim.notify = notify
+    end,
   },
   {
     "nvim-tree/nvim-tree.lua",
@@ -35,6 +46,9 @@ return {
     },
     opts = {
       options = {
+        custom_filter = function(bufnr)
+          return vim.bo[bufnr].buftype ~= 'quickfix'
+        end,
         close_command = function(n) Snacks.bufdelete(n) end,
         right_mouse_command = function(n) Snacks.bufdelete(n) end,
         diagnostics = "nvim_lsp",
