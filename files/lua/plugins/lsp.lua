@@ -7,13 +7,27 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      ensure_installed = { 'gopls', 'solargraph' },
+      ensure_installed = { 'gopls', 'lua_ls', 'solargraph' },
+      automatic_enable = {
+        exclude = { 'lua_ls' },
+      },
     },
   },
   {
     "neovim/nvim-lspconfig",
     version = "*",
     config = function()
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+          },
+        },
+      })
+      vim.lsp.enable('lua_ls')
+
       vim.diagnostic.config({
         severity_sort = true,
         virtual_text = false,

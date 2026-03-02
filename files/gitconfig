@@ -16,6 +16,8 @@
 	syntax-theme = gruvbox-dark
 	navigate = true
 	line-numbers = true
+[diff]
+	algorithm = histogram
 [merge]
 	conflictStyle = zdiff3
 [pull]
