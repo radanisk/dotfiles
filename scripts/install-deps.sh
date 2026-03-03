@@ -6,7 +6,7 @@ usage() {
 Usage: install-deps.sh
 
 Environment variables:
-  DRY_RUN=1           Print commands without executing
+  DRY_RUN=1           Print install commands without executing them
 EOF
 }
 
@@ -75,6 +75,10 @@ ensure_cmds() {
   done
 }
 
+has_rgb_tmux_terminfo() {
+  infocmp -x tmux-256color 2>/dev/null | grep -Eq 'RGB|Tc|setrgbf=|setrgbb='
+}
+
 ensure_brew
 
 ensure_cmds \
@@ -89,16 +93,21 @@ brew_install_cask ghostty
 brew_install_cask font-meslo-lg-nerd-font
 
 ensure_tmux_terminfo() {
-  if infocmp tmux-256color >/dev/null 2>&1; then
-    echo "OK: terminfo tmux-256color available"
+  if has_rgb_tmux_terminfo; then
+    echo "OK: RGB-capable terminfo tmux-256color available"
     return 0
   fi
 
   echo "INFO: installing tmux-256color terminfo (ncurses + tic)"
   brew_install ncurses
-  prefix="$(brew --prefix)"
+  ncurses_prefix="$(brew --prefix ncurses)"
+  terminfo_src="$(find "${ncurses_prefix}/share/terminfo" -name tmux-256color -print -quit)"
+  if [ -z "$terminfo_src" ]; then
+    echo "ERROR: tmux-256color terminfo not found under ${ncurses_prefix}/share/terminfo" >&2
+    exit 1
+  fi
   run mkdir -p "${HOME}/.terminfo"
-  run tic -x -o "${HOME}/.terminfo" "${prefix}/share/terminfo/t/tmux-256color"
+  run tic -x -o "${HOME}/.terminfo" "$terminfo_src"
 }
 
 ensure_tmux_terminfo

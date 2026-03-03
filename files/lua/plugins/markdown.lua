@@ -1,11 +1,15 @@
 return {
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    version = "*",
+    'MeanderingProgrammer/render-markdown.nvim',
+    version = '*',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter',
+    },
     opts = {
       code = {
         sign = false,
-        width = "block",
+        width = 'block',
         right_pad = 1,
       },
       heading = {
@@ -13,9 +17,6 @@ return {
         icons = {},
       },
     },
-    ft = { "markdown", "norg", "rmd", "org" },
-    config = function(_, opts)
-      require("render-markdown").setup(opts)
-    end,
+    ft = { 'markdown', 'norg', 'rmd', 'org' },
   },
 }

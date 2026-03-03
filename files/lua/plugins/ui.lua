@@ -38,6 +38,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     event = "VeryLazy",
+    dependencies = { 'folke/snacks.nvim' },
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },

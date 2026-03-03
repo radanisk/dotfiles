@@ -9,7 +9,7 @@ Personal configuration for Neovim, Git, tmux, and Ghostty.
 * Git
 * make
 
-`make deps-install` installs the remaining dependencies via Homebrew (including a Nerd Font for tmux glyphs). See `scripts/install-deps.sh` for the full list.
+`make deps-install` installs the remaining dependencies via Homebrew, including Ghostty and the `MesloLGS Nerd Font` used by the default terminal config. See `scripts/install-deps.sh` for the full list.
 
 ## Setup
 
