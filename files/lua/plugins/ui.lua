@@ -87,7 +87,19 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
-    config = function()
+    opts = function()
+      local palette = require('gruvbox').palette
+
+      return {
+        overrides = {
+          NotifyBackground = {
+            bg = vim.o.background == 'light' and palette.light0 or palette.dark0,
+          },
+        },
+      }
+    end,
+    config = function(_, opts)
+      require('gruvbox').setup(opts)
       vim.cmd.colorscheme 'gruvbox'
     end
   },
