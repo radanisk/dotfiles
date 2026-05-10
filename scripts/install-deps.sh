@@ -86,6 +86,8 @@ ensure_cmds \
   "nvim:neovim" \
   "node:node" \
   "rg:ripgrep" \
+  "shfmt:shfmt" \
+  "stylua:stylua" \
   "tmux:tmux" \
   "delta:git-delta"
 
