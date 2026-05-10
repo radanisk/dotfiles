@@ -28,7 +28,6 @@ return {
   'tpope/vim-sleuth',
   {
     'tpope/vim-rails',
-    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1352
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "eruby.yaml",

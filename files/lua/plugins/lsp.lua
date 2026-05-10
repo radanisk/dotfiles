@@ -75,52 +75,6 @@ return {
     opts_extend = { "sources.default" },
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      'RRethy/nvim-treesitter-endwise',
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ":TSUpdate",
-    config = function ()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-        ensure_installed = {
-          'bash',
-          'css',
-          'dockerfile',
-          'go',
-          'gomod',
-          'gowork',
-          'gosum',
-          'html',
-          'javascript',
-          'jsdoc',
-          'json',
-          'jsonc',
-          'lua',
-          'luadoc',
-          'make',
-          'markdown',
-          'markdown_inline',
-          'regex',
-          'ruby',
-          'scss',
-          'toml',
-          'tsx',
-          'typescript',
-          'vim',
-          'vimdoc',
-          'yaml',
-        },
-        endwise = { enable = true },
-        highlight = { enable = true }, -- false will disable the whole extension
-        incremental_selection = { enable = true },
-        indent = { enable = true },
-      })
-    end
-  },
-  {
     'j-hui/fidget.nvim',
     opts = {},
     dependencies = { { 'neovim/nvim-lspconfig' } }
