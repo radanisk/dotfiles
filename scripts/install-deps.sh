@@ -80,6 +80,7 @@ has_rgb_tmux_terminfo() {
 }
 
 ensure_brew
+run bash -o pipefail -c 'curl -fsSL https://mise.run | sh'
 
 ensure_cmds \
   "git:git" \

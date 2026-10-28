@@ -24,6 +24,12 @@ nvim-install:
 	./scripts/link.sh $(ROOT)/files/lua ~/.config/nvim/lua
 
 update:
+	@if [ -x "$$HOME/.local/bin/mise" ]; then \
+		echo "Updating mise..."; \
+		"$$HOME/.local/bin/mise" self-update --yes; \
+	else \
+		echo "SKIP: mise not installed at ~/.local/bin/mise"; \
+	fi
 	@if command -v brew >/dev/null 2>&1; then \
 		brew update; \
 		brew upgrade; \
