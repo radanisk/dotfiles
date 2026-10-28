@@ -7,11 +7,41 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      ensure_installed = { 'gopls', 'lua_ls', 'solargraph' },
+      ensure_installed = { 'lua_ls' },
       automatic_enable = {
         exclude = { 'lua_ls' },
       },
     },
+    config = function(_, opts)
+      require('mason-lspconfig').setup(opts)
+
+      local group = vim.api.nvim_create_augroup('InstallLanguageServers', { clear = true })
+      for package_name, filetypes in pairs({
+        gopls = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        solargraph = { 'ruby' },
+      }) do
+        vim.api.nvim_create_autocmd('FileType', {
+          group = group,
+          pattern = filetypes,
+          callback = function()
+            local registry = require('mason-registry')
+            registry.refresh(vim.schedule_wrap(function()
+              local ok, pkg = pcall(registry.get_package, package_name)
+              if not ok then
+                vim.notify(
+                  ('Mason could not resolve %s. Run :MasonUpdate and check :MasonLog.'):format(package_name),
+                  vim.log.levels.ERROR
+                )
+                return
+              end
+              if not pkg:is_installed() and not pkg:is_installing() then
+                require('mason-lspconfig.install').install(pkg)
+              end
+            end))
+          end,
+        })
+      end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
