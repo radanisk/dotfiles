@@ -26,10 +26,4 @@ return {
   },
   { 'tyru/open-browser.vim' },
   { 'weirongxu/plantuml-previewer.vim' },
-  {
-    'vinnymeller/swagger-preview.nvim',
-    cmd = { 'SwaggerPreview', 'SwaggerPreviewStop', 'SwaggerPreviewToggle' },
-    build = 'npm i',
-    config = true,
-  },
 }

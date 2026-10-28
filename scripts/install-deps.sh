@@ -83,12 +83,8 @@ ensure_brew
 run bash -o pipefail -c 'curl -fsSL https://mise.run | sh'
 
 ensure_cmds \
-  "git:git" \
   "nvim:neovim" \
-  "node:node" \
   "rg:ripgrep" \
-  "shfmt:shfmt" \
-  "stylua:stylua" \
   "tmux:tmux" \
   "delta:git-delta"
 
