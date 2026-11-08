@@ -60,6 +60,20 @@ Open a new terminal, then check `command -v mise` and `mise doctor`. Using the e
 Run `make update` to update mise via `~/.local/bin/mise self-update --yes`,
 Homebrew packages/casks, tmux plugins (TPM), and Neovim plugins (Lazy).
 
+## tmux agent list
+
+[agenmux](https://github.com/snirt/agenmux) shows coding agents and their states
+across tmux sessions. It is installed through TPM by `make dotfiles-install`;
+inside an existing tmux session, reload the config and press `prefix + I` to
+install missing plugins. The native engine downloads automatically on first load.
+
+With the default prefix (`Ctrl-b`):
+
+* `prefix + A` opens or focuses the sidebar.
+* `prefix + e` opens the popup.
+* In the list, `.` switches between all panes and agents only, `j`/`k` moves,
+  `Enter` jumps to the selected pane, and `q` closes the view.
+
 ## Local Git config
 
 This repo keeps personal Git identity out of the shared `gitconfig`. Create a local override at `~/.gitconfig.local` with your name and email. The template contains commented placeholders, so you must edit it before your first commit.
