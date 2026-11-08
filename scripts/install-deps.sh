@@ -86,7 +86,10 @@ ensure_cmds \
   "nvim:neovim" \
   "rg:ripgrep" \
   "tmux:tmux" \
-  "delta:git-delta"
+  "delta:git-delta" \
+  "magick:imagemagick"
+
+brew_install mermaid-cli
 
 brew_install_cask ghostty
 brew_install_cask font-meslo-lg-nerd-font

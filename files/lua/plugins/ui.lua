@@ -3,8 +3,15 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    init = function()
+      local chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      if not vim.env.PUPPETEER_EXECUTABLE_PATH and vim.fn.executable(chrome) == 1 then
+        vim.env.PUPPETEER_EXECUTABLE_PATH = chrome
+      end
+    end,
     opts = {
       notifier = { enabled = false },
+      image = { enabled = true },
     },
     keys = {
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
